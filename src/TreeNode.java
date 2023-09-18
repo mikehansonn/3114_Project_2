@@ -5,6 +5,7 @@
  * @version 9/15/23
  */
 public class TreeNode<T> {
+    private int id;
     private T value;
     private TreeNode<T> left;
     private TreeNode<T> right;
@@ -13,11 +14,22 @@ public class TreeNode<T> {
      * Constructor for the treenode
      * 
      * @param value value setter
+     * @param id    id value
      */
-    public TreeNode(T value) {
+    public TreeNode(int id, T value) {
+        this.id = id;
         this.value = value;
         this.left = null;
         this.right = null;
+    }
+
+    /**
+     * Setter for the id
+     * 
+     * @param id new value to set to
+     */
+    public void setID(int id) {
+        this.id = id;
     }
 
     /**
@@ -45,6 +57,15 @@ public class TreeNode<T> {
      */
     public void setRight(TreeNode<T> right) {
         this.right = right;
+    }
+
+    /**
+     * Return the ID
+     * 
+     * @return ID
+     */
+    public int getID() {
+        return this.id;
     }
 
     /**
