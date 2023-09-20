@@ -31,12 +31,66 @@
 
 
 public class SemSearch {
+    private BinarySearchTree<Integer, Seminar> semTree; 
+    private BinarySearchTree<Integer, Integer> costTree;
+    private BinarySearchTree<Integer, String> dateTree;
+    private BinarySearchTree<Integer, String> keywordTree;   
+
+    /**
+     * Constructor for SemSearch
+     * 
+     * @param worldsize size of the BinTree
+     */
+    public SemSearch(int worldsize) {
+        semTree = new BinarySearchTree<>();
+        costTree = new BinarySearchTree<>();
+        dateTree = new BinarySearchTree<>();
+        keywordTree = new BinarySearchTree<>();
+    }
+
+    public void insertSeminar(Seminar sem, int id) {
+        semTree.insert(id, sem);
+        costTree.insert(id, sem.cost());
+        dateTree.insert(id, sem.date());
+        for(String word : sem.keywords()) {
+            keywordTree.insert(id, word);
+        }
+    }
+
+    public void deleteSeminar(int id) {
+
+    }
+
+    public void searchSeminar(String[] array) {
+
+    }
+
+    public void printSeminar(String type) {
+        if(type.equals("date")) {
+            System.out.println(dateTree.toString());
+        }
+        else if(type.equals("keyword")) {
+            System.out.println(keywordTree.toString());
+        }
+        else if(type.equals("location")) {
+            //call the bintree tostring
+            //System.out.println(semTree.toString());
+        }
+        else if(type.equals("cost")) {
+            System.out.println(costTree.toString());
+        }
+        else if(type.equals("ID")) {
+            System.out.println(semTree.toString());
+        }
+    }
+
     /**
      * @param args
      *     Command line parameters
      */
     public static void main(String[] args) {
-        // This is the main file for the program.
-        Seminar dum = new Seminar();
+        int worldSize = Integer.parseInt(args[0]);
+        String filename = args[1];
+
     }
 }

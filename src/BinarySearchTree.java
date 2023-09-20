@@ -34,7 +34,7 @@ public class BinarySearchTree<K, V extends Comparable<V>> {
         if(node.getValue() == null) {
             node = new TreeNode<K, V>(key, data);
         }
-        else if(data.compareTo(node.getValue()) > 0) {
+        else if(data.compareTo(node.getValue()) < 0) {
             node.setLeft(insertHelp(node.getLeft(), key, data));
         }
         else {
@@ -47,9 +47,10 @@ public class BinarySearchTree<K, V extends Comparable<V>> {
      * Starter delete a node from the tree
      * 
      * @param key key of the value to delete
+     * @return return the deleted
      */
-    public void delete(V value) {
-        root = deleteHelp(root, value);
+    public V delete(V value) {
+        return deleteHelp(root, value).getValue();
     }
 
     /**
@@ -135,5 +136,14 @@ public class BinarySearchTree<K, V extends Comparable<V>> {
         else {
             return node.getKey();
         }
+    }
+
+    public String toString() {
+        if(root == null) return "This tree is empty";
+        StringBuilder builder = new StringBuilder();
+
+
+
+        return builder.toString();
     }
 }

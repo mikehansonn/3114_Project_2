@@ -6,7 +6,7 @@
  * @version July 2023, last updated September 2023
  */
 
-public class Seminar {
+public class Seminar implements Comparable<Seminar>{
     private String title; // Semianar title
     private String date; // Seminar date
     private int length; // Seminar length
@@ -111,6 +111,23 @@ public class Seminar {
         return y;
     }
 
+    /**
+     * A compare to for seminar
+     * 
+     * @param checkID id to compare
+     * @return 0 if equal, 1 if id >, -1 if id <
+     */
+    public int compareTo(int checkID) {
+        if(checkID == id) {
+            return 0;
+        }
+        else if(checkID < id) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    }
 
     /**
      * @return a string representation of the object.
