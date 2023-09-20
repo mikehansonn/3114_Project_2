@@ -13,7 +13,7 @@ public class BinarySearchTree<K, V extends Comparable<V>> {
     }
 
     /**
-     * General insert without the recusion
+     * General insert without the recursion
      * 
      * @param data data to insert
      * @param key key to insert
