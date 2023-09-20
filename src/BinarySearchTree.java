@@ -34,7 +34,7 @@ public class BinarySearchTree<K, V extends Comparable<V>> {
         if(node.getValue() == null) {
             node = new TreeNode<K, V>(key, data);
         }
-        else if(data.compareTo(node.getValue()) < 0) {
+        else if(node.getValue().compareTo(data) >= 0)  {
             node.setLeft(insertHelp(node.getLeft(), key, data));
         }
         else {
@@ -42,7 +42,9 @@ public class BinarySearchTree<K, V extends Comparable<V>> {
         }
         return node;
     }
-
+    
+    // 
+    
     /**
      * Starter delete a node from the tree
      * 
@@ -74,7 +76,7 @@ public class BinarySearchTree<K, V extends Comparable<V>> {
             if(node.getLeft() == null) return node.getRight();
             else if(node.getRight() == null) return node.getLeft();
             else {
-                TreeNode<K, V> temp = getmax(node);
+                TreeNode<K, V> temp = getmax(node.getLeft());
                 node.setValue(temp.getValue());
                 node.setKey(temp.getKey());
                 node.setLeft(deletemax(node.getLeft()));
