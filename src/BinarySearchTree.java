@@ -139,13 +139,31 @@ public class BinarySearchTree<K, V extends Comparable<V>> {
             return node.getKey();
         }
     }
+    
+    private void reverseInOrderTraversal(TreeNode<K, V> node, StringBuilder builder, int level, int[] count) {
+        if (node == null) return;
+
+        // Visit the right subtree
+        reverseInOrderTraversal(node.getRight(), builder, level + 1, count);
+
+        // Visit the node itself
+        for (int i = 0; i < level; i++) {
+            builder.append("  ");
+        }
+        builder.append("Key: ").append(node.getKey()).append(", Value: ").append(node.getValue()).append("\n");
+        count[0]++;
+
+        // Visit the left subtree
+        reverseInOrderTraversal(node.getLeft(), builder, level + 1, count);
+    }
+
 
     public String toString() {
         if(root == null) return "This tree is empty";
         StringBuilder builder = new StringBuilder();
-
-
-
+        int[] count = new int[1];
+        reverseInOrderTraversal(root, builder, 0, count);
+        builder.append("Number of records: ").append(count[0]);
         return builder.toString();
     }
 }
