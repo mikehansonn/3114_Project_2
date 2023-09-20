@@ -141,8 +141,14 @@ public class BinarySearchTree<K, V extends Comparable<V>> {
     }
     
     private void reverseInOrderTraversal(TreeNode<K, V> node, StringBuilder builder, int level, int[] count) {
-        if (node == null) return;
-
+        if (node == null) {
+            for (int i = 0; i < level; i++) {
+                builder.append("  ");
+            }
+            builder.append("null\n");
+            return;
+        }
+            
         // Visit the right subtree
         reverseInOrderTraversal(node.getRight(), builder, level + 1, count);
 
