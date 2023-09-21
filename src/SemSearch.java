@@ -52,6 +52,7 @@ public class SemSearch {
         semTree.insert(id, sem);
         costTree.insert(id, sem.cost());
         dateTree.insert(id, sem.date());
+        //call the insert to the location tree
         for(String word : sem.keywords()) {
             keywordTree.insert(id, word);
         }
@@ -62,7 +63,21 @@ public class SemSearch {
     }
 
     public void searchSeminar(String[] array) {
+        if(array[1].equals("ID")) {
 
+        }
+        else if(array[1].equals("cost")) {
+
+        }
+        else if(array[1].equals("date")) {
+            
+        }
+        else if(array[1].equals("keyword")) {
+            
+        }
+        else if(array[1].equals("location")) {
+            
+        }
     }
 
     public void printSeminar(String type) {
@@ -87,10 +102,13 @@ public class SemSearch {
     /**
      * @param args
      *     Command line parameters
+     * @throws Exception 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         int worldSize = Integer.parseInt(args[0]);
         String filename = args[1];
-
+        SemSearch search = new SemSearch(worldSize);
+        CommandFileParser parser = new CommandFileParser(filename, search);
+        parser.readCommands();
     }
 }

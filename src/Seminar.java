@@ -114,14 +114,14 @@ public class Seminar implements Comparable<Seminar>{
     /**
      * A compare to for seminar
      * 
-     * @param checkID id to compare
+     * @param seminar seminar to compare
      * @return 0 if equal, 1 if id >, -1 if id <
      */
-    public int compareTo(int checkID) {
-        if(checkID == id) {
+    public int compareTo(Seminar seminar) {
+        if(seminar.id() == id) {
             return 0;
         }
-        else if(checkID < id) {
+        else if(seminar.id() < id) {
             return -1;
         }
         else {

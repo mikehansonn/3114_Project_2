@@ -18,7 +18,7 @@ public class SemSearchTest extends TestCase {
      */
     public void testMInitx()
     {
-        SemSearch sem = new SemSearch();
+        SemSearch sem = new SemSearch(128);
         assertNotNull(sem);
         SemSearch.main(null);
     }

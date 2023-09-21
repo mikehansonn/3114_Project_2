@@ -9,16 +9,24 @@ import java.util.Scanner;
  */
 public class CommandFileParser {
     private String filename;
+    private SemSearch search;
 
     /**
      * COnstructor for the parser
      * 
      * @param filename file to read from
      */
-    public CommandFileParser(String filename) {
+    public CommandFileParser(String filename, SemSearch search) {
         this.filename = filename;
+        this.search  = search;
     }
 
+    /**
+     * Reads in the commands off of the file
+     * 
+     * @return returns the total string to test
+     * @throws Exception filenotfound
+     */
     public String readCommands() throws Exception {
         String ret = "";
         File file = new File(filename);
@@ -50,21 +58,25 @@ public class CommandFileParser {
                 // Prints the Seminar Object
                 ret += seminar.toString() + "\n";
                 //need to call the insert function too
+                search.insertSeminar(seminar, idin);
             }
             else if(currentCommand.startsWith("search")) {
                 String[] splitStrings = currentCommand.split("\\s+");
                 ret += splitStrings[1] + "\n";
                 //call the search funciton
+                search.searchSeminar(splitStrings);
             }
             else if(currentCommand.startsWith("delete")) {
                  String[] splitStrings = currentCommand.split("\\s+");
                 ret += splitStrings[1] + "\n";
                 //call the delete function
+                search.deleteSeminar(Integer.parseInt(splitStrings[1]));
             }
             else if(currentCommand.startsWith("print")) {
                 String[] splitStrings = currentCommand.split("\\s+");
                 ret += splitStrings[1] + "\n";
                 //call the print function
+                search.printSeminar(splitStrings[1]);
             }
         }
 
