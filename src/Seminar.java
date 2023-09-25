@@ -6,7 +6,7 @@
  * @version July 2023, last updated September 2023
  */
 
-public class Seminar implements Comparable<Seminar>{
+public class Seminar {
     private String title; // Semianar title
     private String date; // Seminar date
     private int length; // Seminar length
@@ -51,6 +51,13 @@ public class Seminar implements Comparable<Seminar>{
         desc = descin;
     }
 
+    /**
+     * Setter for the ID
+     * @param ID new ID
+     */
+    public void setID(int ID) {
+        this.id = ID;
+    }
 
     // ----------------------------------------------------------
     /**
@@ -109,24 +116,6 @@ public class Seminar implements Comparable<Seminar>{
      */
     public int y() {
         return y;
-    }
-
-    /**
-     * A compare to for seminar
-     * 
-     * @param seminar seminar to compare
-     * @return 0 if equal, 1 if id >, -1 if id <
-     */
-    public int compareTo(Seminar seminar) {
-        if(seminar.id() == id) {
-            return 0;
-        }
-        else if(seminar.id() < id) {
-            return -1;
-        }
-        else {
-            return 1;
-        }
     }
 
     /**

@@ -30,11 +30,14 @@
 //   letter of this restriction.
 
 
+/**
+ * The 
+ */
 public class SemSearch {
     private BinarySearchTree<Integer, Seminar> semTree; 
-    private BinarySearchTree<Integer, Integer> costTree;
-    private BinarySearchTree<Integer, String> dateTree;
-    private BinarySearchTree<Integer, String> keywordTree;   
+    private BinarySearchTree<Integer, Seminar> costTree;
+    private BinarySearchTree<String, Seminar> dateTree;
+    private BinarySearchTree<String, Seminar> keywordTree;   
 
     /**
      * Constructor for SemSearch
@@ -48,18 +51,48 @@ public class SemSearch {
         keywordTree = new BinarySearchTree<>();
     }
 
+    /**
+     * Insert the seminar
+     * 
+     * @param sem to insert
+     * @param id to insert
+     */
     public void insertSeminar(Seminar sem, int id) {
+        //check if the id exists already
+        //if it does, print insert falied, else continue
+        //and print the seminar
         semTree.insert(id, sem);
-        costTree.insert(id, sem.cost());
-        dateTree.insert(id, sem.date());
+        costTree.insert(sem.cost(), sem);
+        dateTree.insert(sem.date(), sem);
         //call the insert to the location tree
         for(String word : sem.keywords()) {
-            keywordTree.insert(id, word);
+            keywordTree.insert(word, sem);
         }
     }
 
+    /**
+     * Delete a seminar
+     * 
+     * @param id
+     */
     public void deleteSeminar(int id) {
+        Seminar sem = new Seminar();
+        sem.setID(id);
+        TreeNode<Integer, Seminar> node = semTree.delete(id);
 
+        if(node == null) {
+            System.out.println(
+                "Delete FAILED -- There is no record with ID " + id);
+            return;
+        }
+        System.out.println("Record with ID " 
+                        + id + " successfully deleted from the database");
+        costTree.delete(node.getValue().cost());
+        dateTree.delete(node.getValue().date());
+        String[] keywords = node.getValue().keywords();
+        for(String keyword : keywords) {
+            keywordTree.delete(keyword);
+        }
     }
 
     public void searchSeminar(String[] array) {
@@ -82,19 +115,24 @@ public class SemSearch {
 
     public void printSeminar(String type) {
         if(type.equals("date")) {
+            System.out.println("Date Tree:");
             System.out.println(dateTree.toString());
         }
         else if(type.equals("keyword")) {
+            System.out.println("Keyword Tree:");
             System.out.println(keywordTree.toString());
         }
         else if(type.equals("location")) {
+            System.out.println("Location Tree:");
             //call the bintree tostring
             //System.out.println(semTree.toString());
         }
         else if(type.equals("cost")) {
+            System.out.println("Cost Tree:");
             System.out.println(costTree.toString());
         }
         else if(type.equals("ID")) {
+            System.out.println("ID Tree:");
             System.out.println(semTree.toString());
         }
     }

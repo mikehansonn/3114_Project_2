@@ -4,7 +4,7 @@
  * @author mikehanson
  * @version 9/15/23
  */
-public class TreeNode<K, V extends Comparable<V>> {
+public class TreeNode<K extends Comparable<K>, V> {
     private K key;
     private V value;
     private TreeNode<K, V> left;
