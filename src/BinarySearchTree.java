@@ -204,8 +204,12 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
         for (int i = 0; i < level; i++) {
             builder.append("  ");
         }
-        
-        builder.append(node.getKey()).append("\n");
+        if(node.getValue() instanceof Seminar) {
+            builder.append(node.getKey()).append("\n");
+        }
+        else {
+            builder.append(node.getValue()).append("\n");
+        }
         count[0]++;
 
         reverseInOrderTraversal(node.getLeft(), builder, level + 1, count);
