@@ -3,13 +3,6 @@
  * {Project Description Here}
  */
 
-/**
- * The class containing the main method.
- *
- * @author {Your Name Here}
- * @version {Put Something Here}
- */
-
 // On my honor:
 // - I have not used source code obtained from another current or
 //   former student, or any other unauthorized source, either
@@ -29,15 +22,17 @@
 //   during the discussion. I have violated neither the spirit nor
 //   letter of this restriction.
 
-
 /**
- * The 
+ * The class containing the main method.
+ *
+ * @author mikehanson matt02
+ * @version 9/25/23
  */
 public class SemSearch {
-    private BinarySearchTree<Integer, Seminar> semTree; 
+    private BinarySearchTree<Integer, Seminar> semTree;
     private BinarySearchTree<Integer, Seminar> costTree;
     private BinarySearchTree<String, Seminar> dateTree;
-    private BinarySearchTree<String, Seminar> keywordTree;   
+    private BinarySearchTree<String, Seminar> keywordTree;
 
     /**
      * Constructor for SemSearch
@@ -55,17 +50,20 @@ public class SemSearch {
      * Insert the seminar
      * 
      * @param sem to insert
-     * @param id to insert
+     * @param id  to insert
      */
     public void insertSeminar(Seminar sem, int id) {
-        //check if the id exists already
-        //if it does, print insert falied, else continue
-        //and print the seminar
+        if (semTree.contains(id)) {
+            System.out.println("Insert FAILED - There is already a record with ID " + id);
+            return;
+        }
+        System.out.println("Successfully inserted record with ID " + id);
+        System.out.println(sem.toString());
         semTree.insert(id, sem);
         costTree.insert(sem.cost(), sem);
         dateTree.insert(sem.date(), sem);
-        //call the insert to the location tree
-        for(String word : sem.keywords()) {
+        // call the insert to the location tree
+        for (String word : sem.keywords()) {
             keywordTree.insert(word, sem);
         }
     }
@@ -73,74 +71,85 @@ public class SemSearch {
     /**
      * Delete a seminar
      * 
-     * @param id
+     * @param id id tag
      */
     public void deleteSeminar(int id) {
-        Seminar sem = new Seminar();
-        sem.setID(id);
-        TreeNode<Integer, Seminar> node = semTree.delete(id);
-
-        if(node == null) {
-            System.out.println(
-                "Delete FAILED -- There is no record with ID " + id);
+        if (!semTree.contains(id)) {
+            System.out.println("Delete FAILED -- There is no record with ID " + id);
             return;
         }
-        System.out.println("Record with ID " 
-                        + id + " successfully deleted from the database");
+        TreeNode<Integer, Seminar> node = semTree.delete(id);
+        System.out.println(node.getValue().toString());
+        System.out.println("Record with ID " + id + " successfully deleted from the database");
         costTree.delete(node.getValue().cost());
         dateTree.delete(node.getValue().date());
         String[] keywords = node.getValue().keywords();
-        for(String keyword : keywords) {
+        for (String keyword : keywords) {
             keywordTree.delete(keyword);
         }
     }
 
+    
+    /**
+     * Search for a seminar
+     * 
+     * @param array data of what to search
+     */
     public void searchSeminar(String[] array) {
-        if(array[1].equals("ID")) {
-
+        if (array[1].equals("ID")) {
+            int id = Integer.parseInt(array[2]);
+            semTree.search(id, id);
+        } 
+        else if (array[1].equals("cost")) {
+            int lower = Integer.parseInt(array[2]);
+            int higher = Integer.parseInt(array[3]);
+            costTree.search(lower, higher);
         }
-        else if(array[1].equals("cost")) {
-
-        }
-        else if(array[1].equals("date")) {
-            
-        }
-        else if(array[1].equals("keyword")) {
-            
-        }
-        else if(array[1].equals("location")) {
-            
-        }
-    }
-
-    public void printSeminar(String type) {
-        if(type.equals("date")) {
-            System.out.println("Date Tree:");
-            System.out.println(dateTree.toString());
-        }
-        else if(type.equals("keyword")) {
-            System.out.println("Keyword Tree:");
-            System.out.println(keywordTree.toString());
-        }
-        else if(type.equals("location")) {
-            System.out.println("Location Tree:");
-            //call the bintree tostring
-            //System.out.println(semTree.toString());
-        }
-        else if(type.equals("cost")) {
-            System.out.println("Cost Tree:");
-            System.out.println(costTree.toString());
-        }
-        else if(type.equals("ID")) {
-            System.out.println("ID Tree:");
-            System.out.println(semTree.toString());
+        else if (array[1].equals("date")) {
+            dateTree.search(array[2], array[3]);
+        } 
+        else if (array[1].equals("keyword")) {
+            keywordTree.search(array[2], array[2]);
+        } 
+        else { //location
+            //nothing yet
         }
     }
 
     /**
-     * @param args
-     *     Command line parameters
-     * @throws Exception 
+     * Print different seminars
+     * 
+     * @param type what type to print
+     */
+    public void printSeminar(String type) {
+        if (type.equals("date")) {
+            System.out.print("Date Tree:\n");
+            System.out.print(dateTree.toString());
+        } 
+        else if (type.equals("keyword")) {
+            System.out.print("Keyword Tree:\n");
+            System.out.print(keywordTree.toString());
+        } 
+        /*else if (type.equals("location")) {
+            System.out.print("Location Tree:\n");
+            // call the bintree tostring
+            // System.out.println(semTree.toString());
+        }*/
+        else if (type.equals("cost")) {
+            System.out.print("Cost Tree:\n");
+            System.out.print(costTree.toString());
+        } 
+        else {
+            System.out.print("ID Tree:\n");
+            System.out.print(semTree.toString());
+        }
+    }
+
+    /**
+     * the main fucntion 
+     * 
+     * @param args Command line parameters
+     * @throws Exception
      */
     public static void main(String[] args) throws Exception {
         int worldSize = Integer.parseInt(args[0]);

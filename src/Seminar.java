@@ -51,14 +51,6 @@ public class Seminar {
         desc = descin;
     }
 
-    /**
-     * Setter for the ID
-     * @param ID new ID
-     */
-    public void setID(int ID) {
-        this.id = ID;
-    }
-
     // ----------------------------------------------------------
     /**
      * Returns the seminar ID field

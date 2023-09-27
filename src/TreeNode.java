@@ -3,6 +3,8 @@
  * 
  * @author mikehanson
  * @version 9/15/23
+ * @param <K> key class
+ * @param <V> value
  */
 public class TreeNode<K extends Comparable<K>, V> {
     private K key;
