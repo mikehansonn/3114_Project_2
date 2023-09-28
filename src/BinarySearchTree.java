@@ -57,7 +57,8 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      * @return return the deleted
      */
     public TreeNode<K, V> delete(K key) {
-        return deleteHelp(root, key);
+        root = deleteHelp(root, key);
+        return root;
     }
 
     /**
@@ -78,8 +79,9 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
             node.setRight(deleteHelp(node.getRight(), key));
         } 
         else { // at correct node
-            if (node.getLeft() == null)
+            if (node.getLeft() == null) {
                 return node.getRight();
+            }
             else if (node.getRight() == null)
                 return node.getLeft();
             else {
@@ -125,7 +127,11 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      * @param higher bound
      */
     public void search(K lower, K higher) {
-        searchHelp(root, lower, higher);
+        int[] searched = { 0 };
+        searchHelp(root, lower, higher, searched);
+        if(lower != higher) 
+            System.out.print(
+                    searched[0] + " nodes visited in this search\n");
     }
 
     /**
@@ -135,17 +141,19 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      * @param lower  lower bound
      * @param higher bound
      */
-    private void searchHelp(TreeNode<K, V> node, K lower, K higher) {
+    private void searchHelp(TreeNode<K, V> node, K lower, K higher, int[] searched) {
+        searched[0]++;
         if (node == null) {
             return;
         }
+        if (node.getKey().compareTo(lower) >= 0) {
+            searchHelp(node.getLeft(), lower, higher, searched);
+        } 
+        if (node.getKey().compareTo(higher) < 0) {
+            searchHelp(node.getRight(), lower, higher, searched);
+        }
         if (node.getKey().compareTo(lower) >= 0 && node.getKey().compareTo(higher) <= 0) {
             System.out.print(node.getValue().toString() + "\n");
-        }
-        if (node.getKey().compareTo(lower) <= 0) {
-            searchHelp(node.getRight(), lower, higher);
-        } else if (node.getKey().compareTo(higher) >= 0) {
-            searchHelp(node.getLeft(), lower, higher);
         }
     }
 
@@ -204,12 +212,8 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
         for (int i = 0; i < level; i++) {
             builder.append("  ");
         }
-        if(node.getValue() instanceof Seminar) {
-            builder.append(node.getKey()).append("\n");
-        }
-        else {
-            builder.append(node.getValue()).append("\n");
-        }
+        
+        builder.append(node.getKey()).append("\n");
         count[0]++;
 
         reverseInOrderTraversal(node.getLeft(), builder, level + 1, count);
@@ -222,7 +226,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      */
     public String toString() {
         if (root == null)
-            return "This tree is empty";
+            return "This tree is empty\n";
         StringBuilder builder = new StringBuilder();
         int[] count = new int[1];
         reverseInOrderTraversal(root, builder, 0, count);

@@ -43,6 +43,7 @@ public class SemSearchTest extends TestCase {
         assertNotNull(sem);
         String[] args = { "128", "P2Sample_input.txt"};
         SemSearch.main(args);
+        //assertEquals("", out.toString());
     }
     
     /**
@@ -61,8 +62,8 @@ public class SemSearchTest extends TestCase {
                 + "Date: 2405231000, Length: 75, X: 15, Y: 33, Cost: 125\n"
                 + "Description: This is a great seminar\n"
                 + "Keywords: one, two, three, four\n"
-                + "Insert FAILED - There is already a record with ID 1\n"
-                + "";
+                + "Insert FAILED - There is already a record with ID 1"
+                + "\n";
         search.insertSeminar(sem1, 1);
         assertEquals(expected, out.toString());
     }
@@ -98,10 +99,6 @@ public class SemSearchTest extends TestCase {
                 + "Description: This is a great seminar\n"
                 + "Keywords: one, two, three, four\n"
                 + "Delete FAILED -- There is no record with ID 10\n"
-                + "ID: 1, Title: Seminar Title\n"
-                + "Date: 2405231000, Length: 75, X: 15, Y: 33, Cost: 125\n"
-                + "Description: This is a great seminar\n"
-                + "Keywords: one, two, three, four\n"
                 + "Record with ID 1 successfully deleted from the database\n"
                 + "";
         assertEquals(expected, out.toString());

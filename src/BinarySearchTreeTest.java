@@ -63,7 +63,7 @@ public class BinarySearchTreeTest {
                 "1\n" + //
                 "  null\n" + //
                 "Number of records: 3" +
-                "\nThis tree is empty";
+                "\nThis tree is empty\n";
         System.out.print(seminarTree.toString());
         System.out.print(emptyTree.toString());
         assertEquals(structure, out.toString());
@@ -243,6 +243,34 @@ public class BinarySearchTreeTest {
     }
     
     /**
+     * Final delete test
+     */
+    @Test
+    public void testFinalDelete() {
+        BinarySearchTree<Integer, Seminar> seminarTree = 
+                new BinarySearchTree<>();
+        String[] keywords = { "one" };
+        Seminar sem1 = new Seminar(1, "s", "12", 75,
+            (short)15, (short)33, 125, keywords, "sem");
+        seminarTree.insert(1, sem1);
+        seminarTree.insert(2, sem1);
+        seminarTree.insert(10, sem1);
+        seminarTree.insert(3, sem1);
+        
+        seminarTree.delete(1);
+        String expected = "    null\n"
+                + "  10\n"
+                + "      null\n"
+                + "    3\n"
+                + "      null\n"
+                + "2\n"
+                + "  null\n"
+                + "Number of records: 3\n";
+        System.out.print(seminarTree.toString());
+        assertEquals(expected, out.toString());
+    }
+    
+    /**
      * Test the search function
      */
     @Test
@@ -271,7 +299,8 @@ public class BinarySearchTreeTest {
                 + "ID: 1, Title: s\n"
                 + "Date: 12, Length: 75, X: 15, Y: 33, Cost: 125\n"
                 + "Description: sem\n"
-                + "Keywords: one\n";
+                + "Keywords: one\n"
+                + "8 nodes visited in this search\n";
         String expected2 = "ID: 1, Title: s\n"
                 + "Date: 12, Length: 75, X: 15, Y: 33, Cost: 125\n"
                 + "Description: sem\n"
@@ -284,14 +313,28 @@ public class BinarySearchTreeTest {
                 + "Date: 12, Length: 75, X: 15, Y: 33, Cost: 125\n"
                 + "Description: sem\n"
                 + "Keywords: one\n"
+                + "8 nodes visited in this search\n"
+                + "4 nodes visited in this search\n"
                 + "ID: 1, Title: s\n"
                 + "Date: 12, Length: 75, X: 15, Y: 33, Cost: 125\n"
                 + "Description: sem\n"
-                + "Keywords: one\n";
+                + "Keywords: one\n"
+                + "ID: 1, Title: s\n"
+                + "Date: 12, Length: 75, X: 15, Y: 33, Cost: 125\n"
+                + "Description: sem\n"
+                + "Keywords: one\n"
+                + "ID: 1, Title: s\n"
+                + "Date: 12, Length: 75, X: 15, Y: 33, Cost: 125\n"
+                + "Description: sem\n"
+                + "Keywords: one\n"
+                + "8 nodes visited in this search\n";
+        seminarTree.search(20, 20);
+        assertEquals("", out.toString());
         seminarTree.search(5, 8);
         assertEquals(expected1, out.toString());
         seminarTree.search(11, 15);
-        assertEquals(expected1, out.toString());
+        assertEquals(
+                expected1 + "4 nodes visited in this search\n", out.toString());
         seminarTree.search(0, 4);
         assertEquals(expected2, out.toString());
         seminarTree.search(0, 0);

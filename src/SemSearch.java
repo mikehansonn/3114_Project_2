@@ -29,6 +29,7 @@
  * @version 9/25/23
  */
 public class SemSearch {
+    private int worldsize;
     private BinarySearchTree<Integer, Seminar> semTree;
     private BinarySearchTree<Integer, Seminar> costTree;
     private BinarySearchTree<String, Seminar> dateTree;
@@ -44,6 +45,7 @@ public class SemSearch {
         costTree = new BinarySearchTree<>();
         dateTree = new BinarySearchTree<>();
         keywordTree = new BinarySearchTree<>();
+        this.worldsize = worldsize;
     }
 
     /**
@@ -53,6 +55,10 @@ public class SemSearch {
      * @param id  to insert
      */
     public void insertSeminar(Seminar sem, int id) {
+        if(sem.x() < 0 || sem.y() < 0 || sem.x() >= worldsize || sem.y() >= worldsize) {
+            System.out.println("Insert FAILED - Bad x, y coordinates: " + sem.x() + ", " + sem.y());
+            return;
+        }
         if (semTree.contains(id)) {
             System.out.println("Insert FAILED - There is already a record with ID " + id);
             return;
@@ -79,7 +85,6 @@ public class SemSearch {
             return;
         }
         TreeNode<Integer, Seminar> node = semTree.delete(id);
-        System.out.println(node.getValue().toString());
         System.out.println("Record with ID " + id + " successfully deleted from the database");
         costTree.delete(node.getValue().cost());
         dateTree.delete(node.getValue().date());
@@ -98,17 +103,29 @@ public class SemSearch {
     public void searchSeminar(String[] array) {
         if (array[1].equals("ID")) {
             int id = Integer.parseInt(array[2]);
+            if(!semTree.contains(id)){
+                System.out.println(
+                        "Search FAILED -- There is no record with ID " + id);
+                return;
+            }
+            System.out.println("Found record with ID " + id + ":");
             semTree.search(id, id);
         } 
         else if (array[1].equals("cost")) {
             int lower = Integer.parseInt(array[2]);
             int higher = Integer.parseInt(array[3]);
+            System.out.println(
+                "Seminars with costs in range " + lower + " to " + higher + ":");
             costTree.search(lower, higher);
         }
         else if (array[1].equals("date")) {
+            System.out.println(
+                "Seminars with dates in range " + array[2] + " to " + array[3] + ":");
             dateTree.search(array[2], array[3]);
         } 
         else if (array[1].equals("keyword")) {
+            System.out.println(
+                "Seminars matching keyword " + array[2] + ":");
             keywordTree.search(array[2], array[2]);
         } 
         else { //location
