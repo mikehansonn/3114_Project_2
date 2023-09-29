@@ -84,13 +84,13 @@ public class SemSearch {
             System.out.println("Delete FAILED -- There is no record with ID " + id);
             return;
         }
-        TreeNode<Integer, Seminar> node = semTree.delete(id);
+        TreeNode<Integer, Seminar> node = semTree.delete(id, id);
         System.out.println("Record with ID " + id + " successfully deleted from the database");
-        costTree.delete(node.getValue().cost());
-        dateTree.delete(node.getValue().date());
+        costTree.delete(node.getValue().cost(), id);
+        dateTree.delete(node.getValue().date(), id);
         String[] keywords = node.getValue().keywords();
         for (String keyword : keywords) {
-            keywordTree.delete(keyword);
+            keywordTree.delete(keyword, id);
         }
     }
 

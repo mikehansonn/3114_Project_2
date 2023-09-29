@@ -70,4 +70,6 @@ delete 1
 delete 1
 
 print ID
+print cost
+print date
 print location

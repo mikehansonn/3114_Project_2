@@ -139,12 +139,12 @@ public class BinarySearchTreeTest {
                 + "Number of records: 2\n";
         System.out.print(seminarTree.toString());
         assertTrue(structureBefore.equals(out.toString()));
-        seminarTree.delete(10);
+        seminarTree.delete(10, 10);
         System.out.print(seminarTree.toString());
         assertEquals(structureAfter, out.toString());
-        seminarTree.delete(0);
-        seminarTree.delete(5);
-        seminarTree.delete(50);
+        seminarTree.delete(0, 0);
+        seminarTree.delete(5, 5);
+        seminarTree.delete(50, 50);
         assertEquals(structureAfter, out.toString());
     }
 
@@ -178,8 +178,8 @@ public class BinarySearchTreeTest {
                 "    null\n" + //
                 "Number of records: 5" + //
                 "\n";
-        seminarTree.delete(2);
-        seminarTree.delete(1);
+        seminarTree.delete(2, 1);
+        seminarTree.delete(1, 1);
         System.out.print(seminarTree.toString());
         assertEquals(expected, out.toString());
     }
@@ -223,7 +223,7 @@ public class BinarySearchTreeTest {
         seminarTree.insert(10, sem1);
         seminarTree.insert(3, sem1); 
 
-        seminarTree.delete(5);
+        seminarTree.delete(5, 1);
         String expected = "      null\n"
                 + "    10\n"
                 + "      null\n"
@@ -257,7 +257,7 @@ public class BinarySearchTreeTest {
         seminarTree.insert(10, sem1);
         seminarTree.insert(3, sem1);
         
-        seminarTree.delete(1);
+        seminarTree.delete(1, 1);
         String expected = "    null\n"
                 + "  10\n"
                 + "      null\n"

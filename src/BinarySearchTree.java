@@ -7,6 +7,7 @@
  * @param <K> key class
  * @param <V> value
  */
+@SuppressWarnings("unchecked")
 public class BinarySearchTree<K extends Comparable<K>, V> {
     private TreeNode<K, V> root;
 
@@ -56,9 +57,10 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      * @param key key of the value to delete
      * @return return the deleted
      */
-    public TreeNode<K, V> delete(K key) {
-        root = deleteHelp(root, key);
-        return root;
+    public TreeNode<K, V> delete(K key, int id) {
+        TreeNode<K, V>[] retNode = (TreeNode<K, V>[]) new TreeNode[1];
+        root = deleteHelp(root, key, id, retNode);
+        return retNode[0];
     }
 
     /**
@@ -68,17 +70,24 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      * @param key  key to delete
      * @return the new root node
      */
-    public TreeNode<K, V> deleteHelp(TreeNode<K, V> node, K key) {
+    public TreeNode<K, V> deleteHelp(TreeNode<K, V> node, K key, int id, TreeNode<K, V>[] ret) {
+        // deleting the wrong keyword if there are multiple of the same in the tree
         if (node == null) {
             return null;
         }
+        Seminar sem = (Seminar)node.getValue();
         if (node.getKey().compareTo(key) > 0) {
-            node.setLeft(deleteHelp(node.getLeft(), key));
+            node.setLeft(deleteHelp(node.getLeft(), key, id, ret));
         } 
         else if (node.getKey().compareTo(key) < 0) {
-            node.setRight(deleteHelp(node.getRight(), key));
+            node.setRight(deleteHelp(node.getRight(), key, id, ret));
         } 
+        else if(sem.id() != id) {
+            // this is the correct keyword, 
+            //but not the right ID, onto the next
+        }
         else { // at correct node
+            ret[0] = node;
             if (node.getLeft() == null) {
                 return node.getRight();
             }
@@ -149,11 +158,11 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
         if (node.getKey().compareTo(lower) >= 0) {
             searchHelp(node.getLeft(), lower, higher, searched);
         } 
-        if (node.getKey().compareTo(higher) < 0) {
-            searchHelp(node.getRight(), lower, higher, searched);
-        }
         if (node.getKey().compareTo(lower) >= 0 && node.getKey().compareTo(higher) <= 0) {
             System.out.print(node.getValue().toString() + "\n");
+        }
+        if (node.getKey().compareTo(higher) < 0) {
+            searchHelp(node.getRight(), lower, higher, searched);
         }
     }
 
