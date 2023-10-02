@@ -1,8 +1,7 @@
 public interface Bintree {
     // Insert a SeminarRecord into the tree
-    void insert(Seminar record, boolean vertical);
+    Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height); 
     
-
     // Search for SeminarRecords within a certain distance of given x, y coordinates
     void searchWithinDistance(int x, int y, int distance);
     

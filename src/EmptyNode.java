@@ -1,26 +1,22 @@
-// LeafNode Class
-public class LeafNode implements Bintree {
-    private Seminar record;
-    
-    
-    public LeafNode(Seminar record) {
-        this.record = record;
+public class EmptyNode implements Bintree {
+    // Constructor
+    public EmptyNode() {
     }
 
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
-        return null;
-        // Insert logic here
+        return new LeafNode(newRecord);
     }
 
     @Override
     public void searchWithinDistance(int x, int y, int distance) {
-        // Search logic here
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
     public boolean delete(int id) {
-        // Delete logic here
+        // TODO Auto-generated method stub
         return false;
     }
 }

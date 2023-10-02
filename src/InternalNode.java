@@ -10,7 +10,8 @@ public class InternalNode implements Bintree {
     }
 
     @Override
-    public void insert(Seminar newRecord, boolean vertical) {
+    public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
+        return left;
         // Insert logic here
     }
 
