@@ -55,15 +55,23 @@ public class SemSearch {
      * @param id  to insert
      */
     public void insertSeminar(Seminar sem, int id) {
-        if(sem.x() < 0 || sem.y() < 0 || sem.x() >= worldsize || sem.y() >= worldsize) {
-            System.out.println("Insert FAILED - Bad x, y coordinates: " + sem.x() + ", " + sem.y());
+        if (sem.x() < 0 
+            || sem.y() < 0 
+            || sem.x() >= worldsize 
+            || sem.y() >= worldsize) {
+            System.out.println(
+                "Insert FAILED - Bad x, y coordinates: " 
+                + sem.x() + ", " + sem.y());
             return;
         }
         if (semTree.contains(id)) {
-            System.out.println("Insert FAILED - There is already a record with ID " + id);
+            System.out.println(
+                "Insert FAILED - There is already a record with ID "
+                 + id);
             return;
         }
-        System.out.println("Successfully inserted record with ID " + id);
+        System.out.println(
+            "Successfully inserted record with ID " + id);
         System.out.println(sem.toString());
         semTree.insert(id, sem);
         costTree.insert(sem.cost(), sem);
@@ -81,11 +89,16 @@ public class SemSearch {
      */
     public void deleteSeminar(int id) {
         if (!semTree.contains(id)) {
-            System.out.println("Delete FAILED -- There is no record with ID " + id);
+            System.out.println(
+                "Delete FAILED -- There is no record with ID "
+                 + id);
             return;
         }
         TreeNode<Integer, Seminar> node = semTree.delete(id, id);
-        System.out.println("Record with ID " + id + " successfully deleted from the database");
+        System.out.println(
+            "Record with ID " 
+            + id 
+            + " successfully deleted from the database");
         costTree.delete(node.getValue().cost(), id);
         dateTree.delete(node.getValue().date(), id);
         String[] keywords = node.getValue().keywords();
@@ -103,29 +116,33 @@ public class SemSearch {
     public void searchSeminar(String[] array) {
         if (array[1].equals("ID")) {
             int id = Integer.parseInt(array[2]);
-            if(!semTree.contains(id)){
+            if (!semTree.contains(id)) {
                 System.out.println(
                         "Search FAILED -- There is no record with ID " + id);
                 return;
             }
-            System.out.println("Found record with ID " + id + ":");
+            System.out.println(
+                "Found record with ID " + id + ":");
             semTree.search(id, id);
         } 
         else if (array[1].equals("cost")) {
             int lower = Integer.parseInt(array[2]);
             int higher = Integer.parseInt(array[3]);
             System.out.println(
-                "Seminars with costs in range " + lower + " to " + higher + ":");
+                "Seminars with costs in range "
+                 + lower + " to " + higher + ":");
             costTree.search(lower, higher);
         }
         else if (array[1].equals("date")) {
             System.out.println(
-                "Seminars with dates in range " + array[2] + " to " + array[3] + ":");
+                "Seminars with dates in range "
+                 + array[2] + " to " + array[3] + ":");
             dateTree.search(array[2], array[3]);
         } 
         else if (array[1].equals("keyword")) {
             System.out.println(
-                "Seminars matching keyword " + array[2] + ":");
+                "Seminars matching keyword "
+                 + array[2] + ":");
             keywordTree.search(array[2], array[2]);
         } 
         else { //location

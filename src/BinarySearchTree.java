@@ -55,6 +55,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      * Starter delete a node from the tree
      * 
      * @param key key of the value to delete
+     * @param id the nod id
      * @return return the deleted
      */
     public TreeNode<K, V> delete(K key, int id) {
@@ -68,10 +69,12 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      * 
      * @param node node we are att
      * @param key  key to delete
+     * @param id the node id
+     * @param ret the node getting deleted
      * @return the new root node
      */
-    public TreeNode<K, V> deleteHelp(TreeNode<K, V> node, K key, int id, TreeNode<K, V>[] ret) {
-        // deleting the wrong keyword if there are multiple of the same in the tree
+    public TreeNode<K, V> deleteHelp(
+        TreeNode<K, V> node, K key, int id, TreeNode<K, V>[] ret) {
         if (node == null) {
             return null;
         }
@@ -82,9 +85,8 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
         else if (node.getKey().compareTo(key) < 0) {
             node.setRight(deleteHelp(node.getRight(), key, id, ret));
         } 
-        else if(sem.id() != id) {
-            // this is the correct keyword, 
-            //but not the right ID, onto the next
+        else if (sem.id() != id) {
+            node.setLeft(deleteHelp(node.getLeft(), key, id, ret));
         }
         else { // at correct node
             ret[0] = node;
@@ -138,7 +140,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
     public void search(K lower, K higher) {
         int[] searched = { 0 };
         searchHelp(root, lower, higher, searched);
-        if(lower != higher) 
+        if (lower != higher) 
             System.out.print(
                     searched[0] + " nodes visited in this search\n");
     }
@@ -150,7 +152,8 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      * @param lower  lower bound
      * @param higher bound
      */
-    private void searchHelp(TreeNode<K, V> node, K lower, K higher, int[] searched) {
+    private void searchHelp(
+        TreeNode<K, V> node, K lower, K higher, int[] searched) {
         searched[0]++;
         if (node == null) {
             return;
@@ -158,7 +161,8 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
         if (node.getKey().compareTo(lower) >= 0) {
             searchHelp(node.getLeft(), lower, higher, searched);
         } 
-        if (node.getKey().compareTo(lower) >= 0 && node.getKey().compareTo(higher) <= 0) {
+        if (node.getKey().compareTo(lower) >= 0 
+            && node.getKey().compareTo(higher) <= 0) {
             System.out.print(node.getValue().toString() + "\n");
         }
         if (node.getKey().compareTo(higher) < 0) {
@@ -207,7 +211,10 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
      * @param count   count variable
      */
     private void reverseInOrderTraversal(
-            TreeNode<K, V> node, StringBuilder builder, int level, int[] count) {
+            TreeNode<K, V> node, 
+            StringBuilder builder, 
+            int level, 
+            int[] count) {
         if (node == null) {
             for (int i = 0; i < level; i++) {
                 builder.append("  ");

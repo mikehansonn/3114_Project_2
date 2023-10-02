@@ -104,6 +104,9 @@ public class SemSearchTest extends TestCase {
         assertEquals(expected, out.toString());
     }
 
+    /**
+     * Test the print method
+     */
     @Test
     public void testPrint() {
         SemSearch search = new SemSearch(64);

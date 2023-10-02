@@ -1,9 +1,19 @@
-
-// InternalNode Class
+/**
+ * Internal node for bintree
+ * 
+ * @author mikehanson matt02
+ * @version 9/30/23
+ */
 public class InternalNode implements Bintree {
-    private Bintree left, right;
+    private Bintree left;
+    private Bintree right;
     
-    // implement once the Leaf has been implemented 
+    /**
+     * internal node constructor
+     * 
+     * @param left left value
+     * @param right right value
+     */
     public InternalNode(Bintree left, Bintree right) {
         this.left = left;
         this.right = right;

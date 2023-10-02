@@ -51,7 +51,8 @@ public class CommandFileParser {
                 String[] kin = reader.nextLine().trim().split("\\s+");
                 String descin = reader.nextLine().trim();
 
-                Seminar seminar = new Seminar(idin, tin, datein, lin, xin, yin, cin, kin, descin);
+                Seminar seminar = new Seminar(
+                        idin, tin, datein, lin, xin, yin, cin, kin, descin);
                 search.insertSeminar(seminar, idin);
             } 
             else if (currentCommand.startsWith("search")) {

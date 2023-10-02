@@ -75,7 +75,8 @@ public class BinarySearchTreeTest {
      */
     @Test
     public void testSeminarSearch() {
-        BinarySearchTree<Integer, Seminar> seminarTree = new BinarySearchTree<>();
+        BinarySearchTree<Integer, Seminar> seminarTree = 
+                new BinarySearchTree<>();
         String[] keywords = { "one", "two", "three", "four"};
         Seminar sem1 = new Seminar(1, "Seminar Title", "2405231000", 75,
             (short)15, (short)33, 125, keywords, "This is a great seminar");

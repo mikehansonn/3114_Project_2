@@ -72,4 +72,4 @@ delete 1
 print ID
 print cost
 print date
-print location
+print keyword
