@@ -14,6 +14,11 @@ public class BinTreeManager {
     public void insert(Seminar newRecord) {
         root = root.insert(newRecord, true, x0, y0, width, height);
     }
+    
+    
+    public void searchWithinDistance(int x, int y, int distance) {
+        // Search logic here
+    }
 
     public String toString() {
         StringBuilder build = new StringBuilder();

@@ -89,7 +89,7 @@ public class SemSearch {
      * Delete a seminar
      * 
      * @param id id tag
-     */
+     */ 
     public void deleteSeminar(int id) {
         if (!semTree.contains(id)) {
             System.out.println(
@@ -148,8 +148,16 @@ public class SemSearch {
                  + array[2] + ":");
             keywordTree.search(array[2], array[2]);
         } 
-        else { //location
-            //nothing yet
+        else { 
+            System.out.println(
+                "Seminars within " 
+                 + array[4] + "units of "
+                 + array[2] + ", " 
+                 + array[3] + ":"); 
+            int x = Integer.parseInt(array[2]); 
+            int y = Integer.parseInt(array[3]);
+            int distance = Integer.parseInt(array[4]); 
+            bintree.searchWithinDistance(x, y, distance);      
         }
     }
 
