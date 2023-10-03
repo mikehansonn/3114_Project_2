@@ -18,9 +18,27 @@ public class InternalNode implements Bintree {
         this.right = right;
     }
 
+    /**
+     * Gets the left tree
+     * 
+     * @return left tree
+     */
+    public Bintree getLeft() {
+        return left;
+    }
+
+    /**
+     * Gets the right tree
+     * 
+     * @return right tree
+     */
+    public Bintree getRight() {
+        return right;
+    }
 
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
+        System.out.println("lower: " + x0 + " " + y0 + "  -  higher: " + width + " " + height);
         if (vertical) {
             int xMid = x0 + width / 2;
             if (newRecord.x() < xMid) {

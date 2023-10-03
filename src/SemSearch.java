@@ -34,6 +34,7 @@ public class SemSearch {
     private BinarySearchTree<Integer, Seminar> costTree;
     private BinarySearchTree<String, Seminar> dateTree;
     private BinarySearchTree<String, Seminar> keywordTree;
+    private BinTreeManager bintree;
 
     /**
      * Constructor for SemSearch
@@ -45,6 +46,7 @@ public class SemSearch {
         costTree = new BinarySearchTree<>();
         dateTree = new BinarySearchTree<>();
         keywordTree = new BinarySearchTree<>();
+        bintree = new BinTreeManager(0, 0, worldsize, worldsize);
         this.worldsize = worldsize;
     }
 
@@ -80,6 +82,7 @@ public class SemSearch {
         for (String word : sem.keywords()) {
             keywordTree.insert(word, sem);
         }
+        bintree.insert(sem);
     }
 
     /**
@@ -164,11 +167,10 @@ public class SemSearch {
             System.out.print("Keyword Tree:\n");
             System.out.print(keywordTree.toString());
         } 
-        /*else if (type.equals("location")) {
+        else if (type.equals("location")) {
             System.out.print("Location Tree:\n");
-            // call the bintree tostring
-            // System.out.println(semTree.toString());
-        }*/
+            System.out.println(bintree.toString());
+        }
         else if (type.equals("cost")) {
             System.out.print("Cost Tree:\n");
             System.out.print(costTree.toString());

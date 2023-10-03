@@ -14,4 +14,25 @@ public class BinTreeManager {
     public void insert(Seminar newRecord) {
         root = root.insert(newRecord, true, x0, y0, width, height);
     }
+
+    public String toString() {
+        StringBuilder build = new StringBuilder();
+        preorderTraversal(root, build, "");
+        return build.toString();
+    }
+
+    private void preorderTraversal(Bintree node, StringBuilder builder, String spaces) {
+        if(node instanceof EmptyNode) {
+            builder.append(spaces).append("E").append("\n");
+        }
+        else if(node instanceof InternalNode) {
+            builder.append(spaces).append("I").append("\n");
+            spaces += "  ";
+            preorderTraversal(((InternalNode) node).getLeft(), builder, spaces);
+            preorderTraversal(((InternalNode) node).getRight(), builder, spaces);
+        }
+        else {
+            builder.append(spaces).append("Leaf with objects: " + ((LeafNode) node).getId()).append("\n");
+        }
+    }
 }

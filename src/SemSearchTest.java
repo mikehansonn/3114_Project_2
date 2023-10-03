@@ -43,7 +43,7 @@ public class SemSearchTest extends TestCase {
         assertNotNull(sem);
         String[] args = { "128", "P2Sample_input.txt"};
         SemSearch.main(args);
-        //assertEquals("", out.toString());
+        assertEquals("", out.toString());
     }
     
     /**
