@@ -5,8 +5,7 @@
  * @version 9/30/23
  */
 public class InternalNode implements Bintree {
-    private Bintree left;
-    private Bintree right;
+    private Bintree left, right;
     
     /**
      * internal node constructor
@@ -18,6 +17,7 @@ public class InternalNode implements Bintree {
         this.left = left;
         this.right = right;
     }
+
 
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
