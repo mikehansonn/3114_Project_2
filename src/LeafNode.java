@@ -14,8 +14,8 @@ public class LeafNode implements Bintree {
 
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
-        return null;
-        // Insert logic here
+        InternalNode newNode = new InternalNode(this, new LeafNode(newRecord));
+        return newNode.insert(newRecord, !vertical, x0, y0, width, height);
     }
 
     @Override

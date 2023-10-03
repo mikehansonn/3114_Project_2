@@ -21,8 +21,22 @@ public class InternalNode implements Bintree {
 
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
-        return left;
-        // Insert logic here
+        if (vertical) {
+            int xMid = x0 + width / 2;
+            if (newRecord.x() < xMid) {
+                left = left.insert(newRecord, !vertical, x0, y0, width / 2, height);
+            } else {
+                right = right.insert(newRecord, !vertical, xMid, y0, width / 2, height);
+            }
+        } else {
+            int yMid = y0 + height / 2;
+            if (newRecord.y() < yMid) {
+                left = left.insert(newRecord, !vertical, x0, y0, width, height / 2);
+            } else {
+                right = right.insert(newRecord, !vertical, x0, yMid, width, height / 2);
+            }
+        }
+        return this;
     }
 
     @Override
