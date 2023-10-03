@@ -1,8 +1,17 @@
-// LeafNode Class
+/**
+ * Leaf node for the bintree
+ * 
+ * @author mikehanson matt02
+ * @version 9/30/23
+ */
 public class LeafNode implements Bintree {
     private Seminar record;
     
-    
+    /**
+     * Constructor for the leafnode
+     * 
+     * @param record new record
+     */
     public LeafNode(Seminar record) {
         this.record = record;
     }
