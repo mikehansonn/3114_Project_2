@@ -21,11 +21,12 @@ public class BinTreeManagerTest {
         Seminar sem4 = new Seminar(3, "Seminar Title", "2405231000", 75,
                 (short)0, (short)0, 125, keywords, "This is a great seminar");
         Seminar sem5 = new Seminar(4, "Seminar Title", "2405231000", 75,
-                (short)45, (short)214, 125, keywords, "This is a great seminar");
+                (short)10, (short)10, 125, keywords, "This is a great seminar");
         
         manager.insert(sem2);
         manager.insert(sem3);
         manager.insert(sem4);
+        manager.insert(sem5);
         System.out.println(manager.toString());
     }
 

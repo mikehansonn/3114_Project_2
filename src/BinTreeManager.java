@@ -37,7 +37,7 @@ public class BinTreeManager {
             preorderTraversal(((InternalNode) node).getRight(), builder, spaces);
         }
         else {
-            builder.append(spaces).append("Leaf with objects: " + ((LeafNode) node).getId()).append("\n");
+            builder.append(spaces).append("Leaf with objects: " + ((LeafNode) node).toString()).append("\n");
         }
     }
 }

@@ -38,7 +38,7 @@ public class InternalNode implements Bintree {
 
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
-        System.out.println(newRecord.id() + "  -  x: " + x0 + " " + width + "  -  y: " + y0 + " " + height);
+        System.out.println("  -  x: " + x0 + " " + width + "  -  y: " + y0 + " " + height);
         if (vertical) {
             int xMid = x0 + width / 2;
             if (newRecord.x() < xMid) {

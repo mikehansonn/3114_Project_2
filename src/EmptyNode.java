@@ -5,7 +5,9 @@ public class EmptyNode implements Bintree {
 
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
-        return new LeafNode(newRecord);
+        LinkedList<Seminar> list = new LinkedList<>();
+        list.add(newRecord, newRecord.id());
+        return new LeafNode(list);
     }
 
     @Override

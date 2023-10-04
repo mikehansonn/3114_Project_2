@@ -5,11 +5,11 @@
  * @version 9/30/23
  */
 public class LeafNode implements Bintree {
-    private Seminar record;
+    private LinkedList<Seminar> recordList;
     
     
-    public LeafNode(Seminar record) {
-        this.record = record;
+    public LeafNode(LinkedList<Seminar> recordList) {
+        this.recordList = recordList;
     }
 
     /**
@@ -18,14 +18,23 @@ public class LeafNode implements Bintree {
      * @return the id
      */
     public int getId() {
-        return record.id();
+        return recordList.getData().id();
     }
 
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
+        Seminar testSem = recordList.getData();
+        System.out.println("X Values = " + newRecord.x() + " " + testSem.x() + "     Y Values = " + newRecord.y() + " " + testSem.y());
+        if(newRecord.x() == testSem.x() && newRecord.y() == testSem.y()) {
+            System.out.println("Here");
+            recordList.add(newRecord, newRecord.id());
+            return this;
+        }
         InternalNode newNode = new InternalNode(new EmptyNode(), new EmptyNode());
-        newNode.insert(this.record, !vertical, x0, y0, width, height);
-        newNode.insert(newRecord, !vertical, x0, y0, width, height);
+        for(Seminar sem : recordList.toSemArray()) {
+            newNode.insert(sem, !vertical, x0, y0, width, height);
+        }
+        newNode.insert(newRecord, !vertical, x0, y0, width, height); 
         return newNode;
     }
 
@@ -39,4 +48,12 @@ public class LeafNode implements Bintree {
         // Delete logic here
         return false;
     }
+
+    /**
+     * ToString for the records
+     * @return string
+     */
+    public String toString() {
+        return recordList.toString();
+    } 
 }
