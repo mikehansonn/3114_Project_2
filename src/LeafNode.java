@@ -31,7 +31,7 @@ public class LeafNode implements Bintree {
 
     @Override
     public void searchWithinDistance(int x, int y, int distance) {
-        // Search logic here
+        // Search logic here 
     }
 
     @Override

@@ -17,7 +17,7 @@ public class BinTreeManager {
     
     
     public void searchWithinDistance(int x, int y, int distance) {
-        // Search logic here
+        
     }
 
     public String toString() {
