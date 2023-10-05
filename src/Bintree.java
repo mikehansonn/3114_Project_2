@@ -17,7 +17,7 @@ public interface Bintree {
      * @param y y value search
      * @param distance total distance
      */
-    void searchWithinDistance(int x, int y, int distance);
+    int searchWithinDistance(int x, int y, int distance);
     
     /**
      * Delete a value

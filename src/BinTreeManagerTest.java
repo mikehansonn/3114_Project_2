@@ -24,7 +24,7 @@ public class BinTreeManagerTest {
                 (short)10, (short)10, 125, keywords, "This is a great seminar");
         
         manager.insert(sem2);
-        manager.insert(sem3);
+        manager.insert(sem3); 
         manager.insert(sem4);
         System.out.println(manager.toString());
         manager.insert(sem5);

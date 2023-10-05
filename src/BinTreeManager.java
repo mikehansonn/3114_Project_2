@@ -17,11 +17,11 @@ public class BinTreeManager {
     
     
     public void searchWithinDistance(int x, int y, int distance) {
-        
+        root.searchWithinDistance(x, y, distance); 
     }
 
     public String toString() {
-        StringBuilder build = new StringBuilder();
+        StringBuilder build = new StringBuilder(); 
         preorderTraversal(root, build, "");
         return build.toString();
     }

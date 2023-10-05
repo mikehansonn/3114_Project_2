@@ -13,7 +13,7 @@ public class InternalNode implements Bintree {
      * @param left left value
      * @param right right value
      */
-    public InternalNode(Bintree left, Bintree right) {
+    public InternalNode(Bintree left, Bintree right) { 
         this.left = left;
         this.right = right;
     }
@@ -57,8 +57,8 @@ public class InternalNode implements Bintree {
     }
 
     @Override
-    public void searchWithinDistance(int x, int y, int distance) {
-        // Search logic here
+    public int searchWithinDistance(int x, int y, int distance) {
+        return 5; 
     }
 
     @Override

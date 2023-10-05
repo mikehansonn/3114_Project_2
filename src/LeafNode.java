@@ -18,7 +18,7 @@ public class LeafNode implements Bintree {
      * @return the id
      */
     public int getId() {
-        return recordList.getData().id();
+        return recordList.getData().id(); 
     }
 
     @Override
@@ -39,8 +39,8 @@ public class LeafNode implements Bintree {
     }
 
     @Override
-    public void searchWithinDistance(int x, int y, int distance) {
-        // Search logic here 
+    public int searchWithinDistance(int x, int y, int distance) {
+        return 5; 
     }
 
     @Override
