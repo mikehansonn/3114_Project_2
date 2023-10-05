@@ -113,6 +113,7 @@ public class LinkedList<T> {
         while(current != null) {
             retArray[counter] = current.data;
             current = current.next;
+            counter++;
         }
 
         return retArray;

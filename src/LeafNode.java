@@ -23,10 +23,10 @@ public class LeafNode implements Bintree {
 
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
-        Seminar testSem = recordList.getData();
+        Seminar testSem = recordList.getData(); 
         System.out.println("X Values = " + newRecord.x() + " " + testSem.x() + "     Y Values = " + newRecord.y() + " " + testSem.y());
         if(newRecord.x() == testSem.x() && newRecord.y() == testSem.y()) {
-            System.out.println("Here");
+            System.out.println("Hit");
             recordList.add(newRecord, newRecord.id());
             return this;
         }
