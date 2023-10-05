@@ -63,5 +63,22 @@ public class BinTreeManagerTest {
         manager.insert(sem2);
         manager.insert(sem3);
         System.out.println(manager.toString());
-    }
+    } 
+    
+    public void testSearch() {
+        BinTreeManager manager = new BinTreeManager(0, 0, 128, 128);
+        String[] keywords = { "one", "two", "three", "four"};
+        Seminar sem1 = new Seminar(1, "Seminar Title", "2405231000", 75,
+                (short)10, (short)10, 125, keywords, "This is a great seminar");
+        Seminar sem2 = new Seminar(2, "Seminar Title", "2405231000", 75,
+                (short)30, (short)10, 125, keywords, "This is a great seminar");
+        Seminar sem3 = new Seminar(3, "Seminar Title", "2405231000", 75,
+                (short)0, (short)0, 125, keywords, "This is a great seminar");
+
+        manager.insert(sem1);
+        manager.insert(sem2);
+        manager.insert(sem3);
+        System.out.println(manager.toString());
+        manager.searchWithinDistance(1, 1, 2000);
+    } 
 }
