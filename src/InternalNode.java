@@ -55,10 +55,29 @@ public class InternalNode implements Bintree {
         }
         return this;
     }
+    
+    
+    private boolean intersects(int circleX, int circleY, int circleRadius, int rectX, int rectY, int rectWidth, int rectHeight) {
+        int closestX = Math.max(rectX, Math.min(circleX, rectX + rectWidth));
+        int closestY = Math.max(rectY, Math.min(circleY, rectY + rectHeight));
+        return Math.pow(circleX - closestX, 2) + Math.pow(circleY - closestY, 2) <= Math.pow(circleRadius, 2);
+    }
 
     @Override
-    public int searchWithinDistance(int x, int y, int distance) {
-        return 5; 
+    public int searchWithinDistance(int x, int y, int distance, int x0, int y0, int width, int height, int nodesVisited, boolean vertical) {
+        if (intersects(x, y, distance, x0, y0, width, height)) {
+            nodesVisited++;
+            if (vertical) {
+                int xMid = x0 + width / 2;
+                nodesVisited = left.searchWithinDistance(x, y, distance, x0, y0, width / 2, height, nodesVisited, !vertical);
+                nodesVisited = right.searchWithinDistance(x, y, distance, xMid, y0, width, height, nodesVisited, !vertical);
+            } else {
+                int yMid = y0 + height / 2;
+                nodesVisited = left.searchWithinDistance(x, y, distance, x0, y0, width, height / 2, nodesVisited, !vertical);
+                nodesVisited = right.searchWithinDistance(x, y, distance, x0, yMid, width, height, nodesVisited, !vertical);
+            }
+        }
+        return nodesVisited;
     }
 
     @Override

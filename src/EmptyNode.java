@@ -11,8 +11,9 @@ public class EmptyNode implements Bintree {
     }
 
     @Override
-    public int searchWithinDistance(int x, int y, int distance) {
-        return 5; 
+    public int searchWithinDistance(int x, int y, int distance, int x0, int y0, int width, int height, int nodesVisited, boolean vertical) {
+        nodesVisited++;
+        return nodesVisited; 
         
     }
 

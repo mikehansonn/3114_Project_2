@@ -1,6 +1,7 @@
 public class BinTreeManager {
     private Bintree root;
     private int x0, y0, width, height;  // Dimensions of the root
+    private int nodesVisited = 0;
 
     // Constructor
     public BinTreeManager(int x0, int y0, int width, int height) {
@@ -17,8 +18,12 @@ public class BinTreeManager {
     
     
     public void searchWithinDistance(int x, int y, int distance) {
-        root.searchWithinDistance(x, y, distance); 
+        nodesVisited = root.searchWithinDistance(x, y, distance, x0, y0, width, height, 0, true); 
+        System.out.println(nodesVisited + " nodes visited in this search");
     }
+    
+    
+    
 
     public String toString() {
         StringBuilder build = new StringBuilder(); 
