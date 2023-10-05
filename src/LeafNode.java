@@ -24,17 +24,17 @@ public class LeafNode implements Bintree {
     @Override
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
         Seminar testSem = recordList.getData(); 
-        System.out.println("X Values = " + newRecord.x() + " " + testSem.x() + "     Y Values = " + newRecord.y() + " " + testSem.y());
+
         if(newRecord.x() == testSem.x() && newRecord.y() == testSem.y()) {
-            System.out.println("Hit");
             recordList.add(newRecord, newRecord.id());
             return this;
         }
+
         InternalNode newNode = new InternalNode(new EmptyNode(), new EmptyNode());
         for(Seminar sem : recordList.toSemArray()) {
-            newNode.insert(sem, !vertical, x0, y0, width, height);
+            newNode.insert(sem, vertical, x0, y0, width, height);
         }
-        newNode.insert(newRecord, !vertical, x0, y0, width, height); 
+        newNode.insert(newRecord, vertical, x0, y0, width, height); 
         return newNode;
     }
 

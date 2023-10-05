@@ -7,7 +7,6 @@ public class EmptyNode implements Bintree {
     public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
         LinkedList<Seminar> list = new LinkedList<>();
         list.add(newRecord, newRecord.id());
-        System.out.println(newRecord.id() + "     X: " + x0 + " " + width + "   Y: " + y0 + " " + height);
         return new LeafNode(list);
     }
 
