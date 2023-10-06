@@ -1,6 +1,10 @@
 
 /**
- * {Project Description Here}
+ * Implement 5 trees, containing
+ * bintree and BST to load and
+ * store data of seminar classes
+ * with ease of access for the 
+ * future
  */
 
 // On my honor:
@@ -34,7 +38,7 @@ public class SemSearch {
     private BinarySearchTree<Integer, Seminar> costTree;
     private BinarySearchTree<String, Seminar> dateTree;
     private BinarySearchTree<String, Seminar> keywordTree;
-    private BinTreeManager bintree;
+    private Bintree bintree;
 
     /**
      * Constructor for SemSearch
@@ -46,7 +50,7 @@ public class SemSearch {
         costTree = new BinarySearchTree<>();
         dateTree = new BinarySearchTree<>();
         keywordTree = new BinarySearchTree<>();
-        bintree = new BinTreeManager(0, 0, worldsize, worldsize);
+        bintree = new Bintree(0, 0, worldsize, worldsize);
         this.worldsize = worldsize;
     }
 
@@ -147,11 +151,11 @@ public class SemSearch {
                 "Seminars matching keyword "
                  + array[2] + ":");
             keywordTree.search(array[2], array[2]);
-        } 
+        }
         else { 
             System.out.println(
                 "Seminars within " 
-                 + array[4] + "units of "
+                 + array[4] + " units of "
                  + array[2] + ", " 
                  + array[3] + ":"); 
             int x = Integer.parseInt(array[2]); 
@@ -177,7 +181,7 @@ public class SemSearch {
         } 
         else if (type.equals("location")) {
             System.out.print("Location Tree:\n");
-            System.out.println(bintree.toString());
+            System.out.print(bintree.toString());
         }
         else if (type.equals("cost")) {
             System.out.print("Cost Tree:\n");

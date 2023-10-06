@@ -4,8 +4,9 @@
  * @author mikehanson matt02
  * @version 9/30/23
  */
-public class InternalNode implements Bintree {
-    private Bintree left, right;
+public class InternalNode implements BintreeInterface {
+    private BintreeInterface left;
+    private BintreeInterface right;
     
     /**
      * internal node constructor
@@ -13,7 +14,11 @@ public class InternalNode implements Bintree {
      * @param left left value
      * @param right right value
      */
-    public InternalNode(Bintree left, Bintree right) { 
+
+
+
+    public InternalNode(BintreeInterface left, BintreeInterface right) {
+
         this.left = left;
         this.right = right;
     }
@@ -23,7 +28,7 @@ public class InternalNode implements Bintree {
      * 
      * @return left tree
      */
-    public Bintree getLeft() {
+    public BintreeInterface getLeft() {
         return left;
     }
 
@@ -32,36 +37,45 @@ public class InternalNode implements Bintree {
      * 
      * @return right tree
      */
-    public Bintree getRight() {
+    public BintreeInterface getRight() {
         return right;
     }
 
     @Override
-    public Bintree insert(Seminar newRecord, boolean vertical, int x0, int y0, int width, int height) {
+    public BintreeInterface insert(
+            Seminar newRecord, 
+            boolean vertical, 
+            int x0, 
+            int y0, 
+            int width, 
+            int height) {
         if (vertical) {
             int xMid = (x0 + width) / 2;
+            vertical = !vertical;
             if (newRecord.x() < xMid) {
-                left = left.insert(newRecord, !vertical, x0, y0, width / 2, height);
-            } else {
-                right = right.insert(newRecord, !vertical, xMid, y0, width, height);
+                left = left.insert(
+                        newRecord, vertical, x0, y0, width / 2, height);
+            } 
+            else {
+                right = right.insert(
+                        newRecord, vertical, xMid, y0, width, height);
             }
-        } else {
+        } 
+        else {
             int yMid = (y0 + height) / 2;
+            vertical = !vertical;
             if (newRecord.y() < yMid) {
-                left = left.insert(newRecord, !vertical, x0, y0, width, height / 2);
-            } else {
-                right = right.insert(newRecord, !vertical, x0, yMid, width, height);
+                left = left.insert(
+                        newRecord, vertical, x0, y0, width, height / 2);
+            } 
+            else {
+                right = right.insert(
+                        newRecord, vertical, x0, yMid, width, height);
             }
         }
         return this;
     }
     
-    
-    private boolean intersects(int circleX, int circleY, int circleRadius, int rectX, int rectY, int rectWidth, int rectHeight) {
-        int closestX = Math.max(rectX, Math.min(circleX, rectX + rectWidth));
-        int closestY = Math.max(rectY, Math.min(circleY, rectY + rectHeight));
-        return Math.pow(circleX - closestX, 2) + Math.pow(circleY - closestY, 2) <= Math.pow(circleRadius, 2);
-    }
 
     @Override
     public int searchWithinDistance(int x, int y, int distance, int x0, int y0, int width, int height, int nodesVisited, boolean vertical) {
@@ -80,6 +94,12 @@ public class InternalNode implements Bintree {
         return nodesVisited;
     }
 
+    private boolean intersects(int circleX, int circleY, int circleRadius, int rectX, int rectY, int rectWidth, int rectHeight) {
+        int closestX = Math.max(rectX, Math.min(circleX, rectX + rectWidth));
+        int closestY = Math.max(rectY, Math.min(circleY, rectY + rectHeight));
+        return Math.pow(circleX - closestX, 2) + Math.pow(circleY - closestY, 2) <= Math.pow(circleRadius, 2);
+    }
+    
     @Override
     public boolean delete(int id) {
         // Delete logic here

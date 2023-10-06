@@ -181,6 +181,7 @@ public class BinarySearchTreeTest {
                 "\n";
         seminarTree.delete(2, 1);
         seminarTree.delete(1, 1);
+        seminarTree.delete(5, 5);
         System.out.print(seminarTree.toString());
         assertEquals(expected, out.toString());
     }
@@ -204,6 +205,7 @@ public class BinarySearchTreeTest {
         seminarTree.insert(3, sem1); 
         
         assertTrue(seminarTree.contains(10));
+        assertTrue(seminarTree.contains(3));
     }
     
     /**

@@ -36,7 +36,6 @@ public class CommandFileParser {
 
             if (currentCommand.startsWith("insert")) {
                 String[] splitStrings = currentCommand.split("\\s+");
-                // insert number will be in splitStrings[1]
                 int idin = Integer.parseInt(splitStrings[1]);
 
                 String tin = reader.nextLine().trim();
