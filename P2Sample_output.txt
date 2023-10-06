@@ -113,7 +113,6 @@ I
     E
   E
 Insert FAILED - There is already a record with ID 10
-
 Seminars matching keyword VT:
 ID: 10, Title: Computing Systems Research at VT
 Date: 0701250830, Length: 30, X: 30, Y: 10, Cost: 17
@@ -127,13 +126,11 @@ ID: 1, Title: Overview of HCI Research at VT
 Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
 Description: This seminar will present an overview of HCI research at VT
 Keywords: HCI, Computer_Science, VT, Virginia_Tech
-
 Found record with ID 1:
 ID: 1, Title: Overview of HCI Research at VT
 Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
 Description: This seminar will present an overview of HCI research at VT
 Keywords: HCI, Computer_Science, VT, Virginia_Tech
-
 Seminars with costs in range 30 to 50:
 ID: 2, Title: Computational Biology and Bioinformatics in CS at Virginia Tech
 Date: 0610071600, Length: 60, X: 10, Y: 10, Cost: 30
@@ -144,7 +141,6 @@ Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
 Description: This seminar will present an overview of HCI research at VT
 Keywords: HCI, Computer_Science, VT, Virginia_Tech
 7 nodes visited in this search
-
 Seminars within 1 units of -1, 0:
 Found a record with key value 3 at 0, 0
 8 nodes visited in this search
@@ -166,7 +162,6 @@ Found a record with key value 1 at 10, 10
 Found a record with key value 2 at 10, 10
 Found a record with key value 10 at 30, 10
 11 nodes visited in this search
-
 Seminars with dates in range 0 to 1:
 ID: 1, Title: Overview of HCI Research at VT
 Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
@@ -181,7 +176,6 @@ Date: 0701250830, Length: 30, X: 30, Y: 10, Cost: 17
 Description: Seminar about the      Computing systems research at      VT
 Keywords: high_performance_computing, grids, VT, computer, science
 8 nodes visited in this search
-
 Record with ID 1 successfully deleted from the database
 Delete FAILED -- There is no record with ID 1
 ID Tree:

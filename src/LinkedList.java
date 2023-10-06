@@ -1,5 +1,6 @@
 /**
  * LinkedList implementation
+ * @param <T> the type we want
  * 
  * @author mikehanson
  * @version 10/4/23
@@ -27,6 +28,7 @@ public class LinkedList<T> {
      * Add object to the end of the list
      * 
      * @param object new object to add
+     * @param id of the object
      */
     public void add(Seminar object, int id) {
         Node<Seminar> newNode = new Node<>(object, id);
@@ -51,12 +53,17 @@ public class LinkedList<T> {
         return head.data;
     }
 
-    private int size() {
+    /**
+     * Returns the linkedList size
+     * 
+     * @return the size of the list
+     */
+    public int size() {
         int size = 0;
 
         Node<Seminar> current = head;
 
-        while(current != null) {
+        while (current != null) {
             current = current.next;
             size++;
         }
@@ -68,9 +75,10 @@ public class LinkedList<T> {
      * Remove a certain object
      * 
      * @param object the object to remove
+     * @param id the obj id to delete
      */
     public void remove(Seminar object, int id) {
-        if(head == null) {
+        if (head == null) {
             return;
         }
 
@@ -91,12 +99,17 @@ public class LinkedList<T> {
         }
     }
 
-    public String toString() {
+    /**
+     * The toString for the list
+     * 
+     * @return the list of ids
+     */
+    public String toLinkedString() {
         String ret = "";
 
         Node<Seminar> current = head;
 
-        while(current != null) {
+        while (current != null) {
             ret += current.id + " ";
             current = current.next;
         }
@@ -105,12 +118,17 @@ public class LinkedList<T> {
         return ret;
     } 
 
+    /**
+     * The toArray for the linked list
+     *  
+     * @return returns an array of seminars
+     */
     public Seminar[] toSemArray() {
         Seminar[] retArray = new Seminar[size()];
 
         Node<Seminar> current = head;
         int counter = 0;
-        while(current != null) {
+        while (current != null) {
             retArray[counter] = current.data;
             current = current.next;
             counter++;
