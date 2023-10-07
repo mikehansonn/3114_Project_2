@@ -64,7 +64,7 @@ public class LinkedListTest {
     @Test
     public void testRemove() {
         LinkedList<Seminar> list = new LinkedList<>();
-        list.remove(null, 0);
+        list.remove(0);
         assertEquals(0, list.size());
         String[] keywords = { "one", "two", "three", "four"};
         Seminar sem1 = new Seminar(1, "Seminar Title", "2405231000", 75,
@@ -74,13 +74,13 @@ public class LinkedListTest {
         list.add(sem1, 3);
         list.add(sem1, 4);
         list.add(sem1, 5);
-        list.remove(sem1, 1);
+        list.remove(1);
         assertEquals(4, list.size());
-        list.remove(sem1, 3);
+        list.remove(3);
         assertEquals(3, list.size());
-        list.remove(sem1, 5);
+        list.remove(5);
         assertEquals(2, list.size());
-        list.remove(sem1, 100);
+        list.remove(100);
         assertEquals(2, list.size());
     }
 }

@@ -181,4 +181,45 @@ public class BintreeTest {
         manager.searchWithinDistance(1, 1, 3);
         assertEquals(check, out.toString());
     }
+    
+    
+    
+    
+    /**
+     * Test the delete function
+     */
+    @Test
+    public void testDelete() {
+        Bintree manager = new Bintree(0, 0, 128, 128);
+        String[] keywords = { "one", "two", "three", "four"};
+        Seminar sem1 = new Seminar(1, "Seminar Title", "2405231000", 75,
+                (short)10, (short)10, 125, keywords, "This is a great seminar");
+        Seminar sem2 = new Seminar(2, "Seminar Title", "2405231000", 75,
+                (short)30, (short)10, 125, keywords, "This is a great seminar");
+        Seminar sem3 = new Seminar(3, "Seminar Title", "2405231000", 75,
+                (short)0, (short)0, 125, keywords, "This is a great seminar");
+
+        manager.insert(sem1);
+        manager.insert(sem2);
+        manager.insert(sem3);
+        manager.delete(1, 10, 10);
+        String check = "I\n"
+                + "  I\n"
+                + "    I\n"
+                + "      I\n"
+                + "        I\n"
+                + "          I\n"
+                + "            I\n"
+                + "              Leaf with 1 objects: 3\n"
+                + "              E\n"
+                + "            E\n"
+                + "          Leaf with 1 objects: 2\n"
+                + "        E\n"
+                + "      E\n"
+                + "    E\n"
+                + "  E\n"; 
+        System.out.print(manager.toString());
+        assertEquals(check, out.toString());
+     
+    }
 }
