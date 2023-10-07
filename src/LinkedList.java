@@ -74,7 +74,6 @@ public class LinkedList<T> {
     /**
      * Remove a certain object
      * 
-     * @param object the object to remove
      * @param id the obj id to delete
      */
     public void remove(int id) {
