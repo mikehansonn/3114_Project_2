@@ -160,8 +160,25 @@ public class BintreeTest {
         manager.insert(sem1);
         manager.insert(sem2);
         manager.insert(sem3);
-        System.out.println(manager.toString());
-        manager.searchWithinDistance(1, 1, 2000);
-        assertEquals("", out.toString());
+        String check = "I\n"
+                + "  I\n"
+                + "    I\n"
+                + "      I\n"
+                + "        I\n"
+                + "          I\n"
+                + "            I\n"
+                + "              Leaf with 1 objects: 3\n"
+                + "              Leaf with 1 objects: 1\n"
+                + "            E\n"
+                + "          Leaf with 1 objects: 2\n"
+                + "        E\n"
+                + "      E\n"
+                + "    E\n"
+                + "  E\n"
+                + "Found a record with key value 3 at 0, 0\n"
+                + "8 nodes visited in this search\n";
+        System.out.print(manager.toString());
+        manager.searchWithinDistance(1, 1, 3);
+        assertEquals(check, out.toString());
     }
 }

@@ -93,12 +93,6 @@ public class InternalNode implements BintreeInterface {
         }
         return nodesVisited;
     }
-
-    private boolean intersects(int circleX, int circleY, int circleRadius, int rectX, int rectY, int rectWidth, int rectHeight) {
-        int closestX = Math.max(rectX, Math.min(circleX, rectX + rectWidth));
-        int closestY = Math.max(rectY, Math.min(circleY, rectY + rectHeight));
-        return Math.pow(circleX - closestX, 2) + Math.pow(circleY - closestY, 2) <= Math.pow(circleRadius, 2);
-    }
     
     @Override
     public boolean delete(int id) {

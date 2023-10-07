@@ -36,7 +36,9 @@ public class EmptyNode implements BintreeInterface {
         int height, 
         int nodesVisited, 
         boolean vertical) {
-        nodesVisited++;
+        if (intersects(x, y, distance, x0, y0, width, height)) {
+            nodesVisited++;
+        }
         return nodesVisited;
 
     }
