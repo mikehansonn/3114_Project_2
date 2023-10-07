@@ -153,11 +153,11 @@ public class SemSearch {
             keywordTree.search(array[2], array[2]);
         }
         else { 
-            System.out.println(
+            System.out.print(
                 "Seminars within " 
                  + array[4] + " units of "
                  + array[2] + ", " 
-                 + array[3] + ":"); 
+                 + array[3] + ":\n"); 
             int x = Integer.parseInt(array[2]); 
             int y = Integer.parseInt(array[3]);
             int distance = Integer.parseInt(array[4]); 

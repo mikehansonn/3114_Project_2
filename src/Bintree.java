@@ -46,7 +46,7 @@ public class Bintree {
      */
     public void searchWithinDistance(int x, int y, int distance) {
         nodesVisited = root.searchWithinDistance(x, y, distance, x0, y0, width, height, 0, true); 
-        System.out.println(nodesVisited + " nodes visited in this search");
+        System.out.print(nodesVisited + " nodes visited in this search\n");
     }
 
     /**

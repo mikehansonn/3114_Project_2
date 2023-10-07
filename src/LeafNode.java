@@ -51,10 +51,12 @@ public class LeafNode implements BintreeInterface {
 
     @Override
     public int searchWithinDistance(int x, int y, int distance, int x0, int y0, int width, int height, int nodesVisited, boolean vertical) {
-        nodesVisited++;
-        for (Seminar sem : recordList.toSemArray()) {
-            if (isWithinDistance(x, y, sem.x(), sem.y(), distance)) {
-                System.out.println("Found a record with key value " + sem.id() + " at " + sem.x() + ", " + sem.y());
+        if (intersects(x, y, distance, x0, y0, width, height)) {
+            nodesVisited++;
+            for (Seminar sem : recordList.toSemArray()) {
+                if (isWithinDistance(x, y, sem.x(), sem.y(), distance)) {
+                    System.out.print("Found a record with key value " + sem.id() + " at " + sem.x() + ", " + sem.y() + "\n");
+                }
             }
         }
         return nodesVisited;
