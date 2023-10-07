@@ -48,7 +48,7 @@ public class SemSearch {
     public SemSearch(int worldsize) {
         semTree = new BinarySearchTree<>();
         costTree = new BinarySearchTree<>();
-        dateTree = new BinarySearchTree<>();
+        dateTree = new BinarySearchTree<>(); 
         keywordTree = new BinarySearchTree<>();
         bintree = new Bintree(0, 0, worldsize, worldsize);
         this.worldsize = worldsize;
@@ -86,7 +86,7 @@ public class SemSearch {
         for (String word : sem.keywords()) {
             keywordTree.insert(word, sem);
         }
-        bintree.insert(sem);
+        bintree.insert(sem); 
     }
 
     /**
@@ -108,6 +108,9 @@ public class SemSearch {
             + " successfully deleted from the database");
         costTree.delete(node.getValue().cost(), id);
         dateTree.delete(node.getValue().date(), id);
+        
+        bintree.delete(id, node.getValue().x(), node.getValue().y()); 
+        
         String[] keywords = node.getValue().keywords();
         for (String keyword : keywords) {
             keywordTree.delete(keyword, id);

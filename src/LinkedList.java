@@ -77,7 +77,7 @@ public class LinkedList<T> {
      * @param object the object to remove
      * @param id the obj id to delete
      */
-    public void remove(Seminar object, int id) {
+    public void remove(int id) {
         if (head == null) {
             return;
         }

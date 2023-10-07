@@ -54,7 +54,7 @@ public interface BintreeInterface {
      * @param id id to delete
      * @return if it is deleted
      */
-    boolean delete(int id);
+    BintreeInterface delete(int x, int y, int x0, int y0, int width, int height, boolean vertical, int id); 
 
     /**
      * Intersect method for the nodes

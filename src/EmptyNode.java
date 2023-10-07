@@ -44,8 +44,7 @@ public class EmptyNode implements BintreeInterface {
     }
 
     @Override
-    public boolean delete(int id) {
-        //nothing yet
-        return false;
+    public BintreeInterface delete(int x, int y, int x0, int y0, int width, int height, boolean vertical, int id){
+        return this; 
     }
 }

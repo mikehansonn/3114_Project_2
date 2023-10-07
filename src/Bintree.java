@@ -44,11 +44,18 @@ public class Bintree {
      * @param y y coordinate
      * @param distance total radius
      */
-    
-    
     public void searchWithinDistance(int x, int y, int distance) {
         nodesVisited = root.searchWithinDistance(x, y, distance, x0, y0, width, height, 0, true); 
         System.out.print(nodesVisited + " nodes visited in this search\n");
+    }
+    
+    /**
+     * delete record
+     * 
+     * @param id seminar id
+     */
+    public void delete(int id, int x, int y) {
+       root = root.delete(x, y, x0, y0, width, height, true, id); 
     }
 
     /**

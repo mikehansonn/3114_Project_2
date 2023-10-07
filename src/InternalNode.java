@@ -95,8 +95,30 @@ public class InternalNode implements BintreeInterface {
     }
     
     @Override
-    public boolean delete(int id) {
-        // Delete logic here
-        return false;
-    }
+    public BintreeInterface delete(int x, int y, int x0, int y0, int width, int height, boolean vertical, int id){
+        if (vertical) {
+            int xMid = (x0 + width) / 2;
+            vertical = !vertical;
+            if (x < xMid) {
+                left = left.delete(x, y, x0, y0, width / 2, height, vertical, id);
+            } 
+            else {
+                right = right.delete(x, y, xMid, y0, width, height, vertical, id);
+            }
+        } 
+        else {
+            int yMid = (y0 + height) / 2;
+            vertical = !vertical;
+            if (y < yMid) {
+                left = left.delete(x, y, x0, y0, width, height / 2, vertical, id);
+            } 
+            else {
+                right = right.delete(x, y, x0, yMid, width, height, vertical, id);
+            }
+        }
+        return this;
+   }
+    
+    
+    
 }

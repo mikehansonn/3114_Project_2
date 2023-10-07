@@ -73,9 +73,18 @@ public class LeafNode implements BintreeInterface {
     }
 
     @Override
-    public boolean delete(int id) {
-        // Delete logic here
-        return false;
+    public BintreeInterface delete(int x, int y, int x0, int y0, int width, int height, boolean vertical, int id) {
+        for (Seminar sem : recordList.toSemArray()) {
+            if(sem.id() == id) {
+                recordList.remove(id); 
+                if (recordList.isEmpty()) {
+                    return new EmptyNode();
+                }
+            }
+        }
+    
+        return this; 
+          
     }
 
     /**
