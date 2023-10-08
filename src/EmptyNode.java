@@ -12,6 +12,16 @@ public class EmptyNode implements BintreeInterface {
     public EmptyNode() {
     }
 
+    /**
+     * Inserts a new Seminar into the tree.
+     * 
+     * @param newRecord The Seminar to insert.
+     * @param vertical  Flag for vertical division.
+     * @param x0, y0    Bottom-left corner coordinates.
+     * @param width     Width of the bounding box.
+     * @param height    Height of the bounding box.
+     * @return          A new LeafNode containing the Seminar.
+     */
     @Override
     public BintreeInterface insert( 
             Seminar newRecord, 
@@ -25,7 +35,19 @@ public class EmptyNode implements BintreeInterface {
         return new LeafNode(list);
     } 
         
-
+    
+    /**
+     * Searches for nodes within a given distance.
+     * 
+     * @param x, y      Coordinates of the search point.
+     * @param distance  Search radius.
+     * @param x0, y0    Bottom-left corner coordinates of bounding box.
+     * @param width     Width of bounding box.
+     * @param height    Height of bounding box.
+     * @param nodesVisited Count of visited nodes.
+     * @param vertical  Flag for vertical division.
+     * @return          Updated count of visited nodes.
+     */
     public int searchWithinDistance(
         int x, 
         int y,
@@ -43,6 +65,17 @@ public class EmptyNode implements BintreeInterface {
 
     }
 
+    /**
+     * Deletes a node by its ID.
+     * 
+     * @param x, y      Coordinates of the node.
+     * @param x0, y0    Top-left corner coordinates of bounding box.
+     * @param width     Width of bounding box.
+     * @param height    Height of bounding box.
+     * @param vertical  Flag for vertical division.
+     * @param id        ID of the node to delete.
+     * @return          Updated tree after deletion.
+     */
     @Override
     public BintreeInterface delete(int x, int y, int x0, int y0, int width, int height, boolean vertical, int id){
         return this; 

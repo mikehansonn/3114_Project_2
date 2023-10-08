@@ -22,7 +22,7 @@ public class LinkedListTest {
     }
 
     /**
-     * Test the add funciton
+     * Test the add function
      */
     @Test
     public void testAdd() {

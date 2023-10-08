@@ -12,7 +12,7 @@ public class CommandFileParser {
     private SemSearch search;
 
     /**
-     * COnstructor for the parser
+     * Constructor for the parser
      * 
      * @param filename file to read from
      * @param search   the semSearch class

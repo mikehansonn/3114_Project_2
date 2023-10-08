@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Test the leafnode class
+ * Test the leafNode class
  * 
  * @author mikehanson
  * @version 10/7/23 

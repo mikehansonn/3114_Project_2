@@ -34,7 +34,7 @@
  */
 public class SemSearch {
     private int worldsize;
-    private BinarySearchTree<Integer, Seminar> semTree;
+    private BinarySearchTree<Integer, Seminar> semTree; 
     private BinarySearchTree<Integer, Seminar> costTree;
     private BinarySearchTree<String, Seminar> dateTree;
     private BinarySearchTree<String, Seminar> keywordTree;

@@ -2,7 +2,7 @@
  * LinkedList implementation
  * @param <T> the type we want
  * 
- * @author mikehanson
+ * @author mikehanson matt02
  * @version 10/4/23
  */
 public class LinkedList<T> {
